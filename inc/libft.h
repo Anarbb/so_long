@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:31:45 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/10/21 18:21:52 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:22:52 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strdup(const char *s1);
+size_t	ft_arrlen(char **arr);
 /* PART TWO */
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

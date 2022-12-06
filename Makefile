@@ -9,7 +9,7 @@
 
 NAME        := so_long
 CC        := cc
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror -g
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
@@ -60,6 +60,7 @@ SRCS        :=      main.c \
                           src/libft/ft_substr.c \
                           src/libft/ft_tolower.c \
                           src/libft/ft_toupper.c \
+                          src/libft/ft_arrlen.c \
                           src/map.c \
                           
 OBJS        := $(SRCS:.c=.o)

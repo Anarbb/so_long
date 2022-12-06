@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/05 17:40:29 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/06 20:58:20 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,34 @@
 # define COLLECTIBLE "./sprites/Other/Pacdots/pacdot_food.xpm"
 # define PLAYER "./sprites/Pac-Man/pac_open_left.xpm"
 # define EXIT "./sprites/Other/Portal/portal.xpm"
+
 typedef struct s_map
 {
 	int		fd;
-	int		h;
-	int		w;
-	char	*path;
+	char	**map;
 	char	*line;
-	int		garbage;
+	int		width;
+	int		height;
+	size_t	counter;
 	int		x;
 	int		y;
-	int		counter;
+	int		garbage;
+	void	*img_ptr;
+	void	*img_data;
+	int		bpp;
+	int		size_l;
+	int		endian;
+	int 	img_width;
+	int 	img_height;
 }				t_map;
 
 typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_ptr;
-
+	
 }				t_game;
+
 void	draw_map(t_map *map, t_game *game);
-void	init_map(char *map_path, t_map *map);
+int		init_map(char *map_path, t_map *map);
 #endif

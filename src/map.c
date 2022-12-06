@@ -3,66 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ven <aarbaoui@student.1337.ma>             +#+  +:+       +#+        */
+/*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/05 17:51:35 by ven              ###   ########.fr       */
+/*   Updated: 2022/12/06 20:58:00 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/game.h"
 
-void	init_map(char *map_path, t_map *map)
+int	init_map(char *map_path, t_map *map)
 {
-	map->path = map_path;
 	map->fd = open(map_path, O_RDONLY);
-	map->h = 0;
-	while (get_next_line(map->fd, &map->line))
-		map->h++;
-	map->h *= SPRITE_SIZE;
-	close(map->fd);
-	map->fd = open(map_path, O_RDONLY);
-	map->w = -32;
+	if (map->fd == -1)
+		return (-1);
+	get_next_line(map->fd, &map->line);
+	map->width = (ft_strlen(map->line) * SPRITE_SIZE) - SPRITE_SIZE;
+	free(map->line);
 	while (get_next_line(map->fd, &map->line))
 	{
-		map->w = ft_strlen(map->line) * SPRITE_SIZE - 32;
-		break;
+		map->height += SPRITE_SIZE;
+		free(map->line);
 	}
+	map->height += SPRITE_SIZE;
+	map->map = (char **)malloc(sizeof(char *) * map->height);
+	map->counter = 0;
+	map->fd = open(map_path, O_RDONLY);
+	while (get_next_line(map->fd, &map->line))
+	{
+		map->map[map->counter] = ft_strdup(map->line);
+		map->counter++;
+		free(map->line);
+	}
+	close(map->fd);
+	return (1);
 }
 
 void	draw_xpm(t_map *map, t_game *game, char *block)
 {
-	game->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, block, &map->garbage, &map->garbage);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img_ptr, map->x * 32, map->y * 32);
+	map->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, block, &map->img_width, &map->img_height);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->img_ptr, map->x * SPRITE_SIZE, map->y * SPRITE_SIZE);
 }
 
 void	draw_map(t_map *map, t_game *game)
 {
 	map->garbage = 0;
-	map->y = 0;
-	map->x = 0;
-	map->counter = 0;
-	while (map->line)
+	// use map->map to draw the map
+	while (map->y < map->height / SPRITE_SIZE + 1)
 	{
-		while (map->line[map->counter])
+		map->x = 0;
+		while (map->x < map->width / SPRITE_SIZE + 1)
 		{
-			if (map->line[map->counter] == '1')
-				draw_xpm(map, game, WALL);
-			else if (map->line[map->counter] == '0')
-				draw_xpm(map, game, EMPTY);
-			else if (map->line[map->counter] == 'C')
-				draw_xpm(map, game, COLLECTIBLE);
-			else if (map->line[map->counter] == 'P')
-				draw_xpm(map, game, PLAYER);
-			else if (map->line[map->counter] == 'E')
-				draw_xpm(map, game, EXIT);
-			map->counter++;
+			if (map->map[map->y][map->x] == '1')
+				draw_xpm(map, game, "./img/wall.xpm");
+			else if (map->map[map->y][map->x] == '0')
+				draw_xpm(map, game, "./img/ground.xpm");
+			else if (map->map[map->y][map->x] == 'C')
+				draw_xpm(map, game, "./img/coin.xpm");
+			else if (map->map[map->y][map->x] == 'E')
+				draw_xpm(map, game, "./img/exit.xpm");
+			else if (map->map[map->y][map->x] == 'P')
+				draw_xpm(map, game, "./img/player.xpm");
 			map->x++;
 		}
 		map->y++;
-		map->x = 0;
-		map->counter = 0;
-		get_next_line(map->fd, &map->line);
 	}
-	close(map->fd);
 }
