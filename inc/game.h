@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 15:58:35 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:05:09 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_map	*map;
 }				t_game;
 
 void	draw_map(t_map *map, t_game *game);
