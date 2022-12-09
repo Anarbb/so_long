@@ -6,11 +6,11 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:14:27 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/05 17:35:54 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:22:48 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

@@ -6,11 +6,11 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:31:01 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/05 17:38:19 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:22:48 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/get_next_line.h"
+#include "get_next_line.h"
 
 int	gn_strchr(char *str, char n)
 {

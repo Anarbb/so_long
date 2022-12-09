@@ -6,11 +6,11 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:36:52 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/05 17:38:31 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:22:48 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/get_next_line.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd, char **to)
 {

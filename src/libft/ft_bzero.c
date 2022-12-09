@@ -6,11 +6,11 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:22:28 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/05 17:35:54 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:22:48 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
