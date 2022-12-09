@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 16:42:37 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:36:54 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	init_map(char *map_path, t_map *map)
 	map->fd = open(map_path, O_RDONLY);
 	if (map->fd == -1)
 		return (0);
-	get_next_line(map->fd, &map->line);
+	if (!get_next_line(map->fd, &map->line))
+		return (0);
 	map->width = (ft_strlen(map->line) * SPRITE_SIZE) - SPRITE_SIZE;
 	free(map->line);
 	map->height = SPRITE_SIZE;
@@ -76,6 +77,8 @@ void	draw_map(t_map *map, t_game *game)
 				draw_xpm(map, game, EXIT);
 			else if (map->map[map->y][map->x] == 'P')
 				draw_xpm(map, game, PLAYER);
+			else if (map->map[map->y][map->x] == 'G')
+				draw_xpm(map, game, ENEMY);
 			else
 				exit(1);
 			map->x++;
