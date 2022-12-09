@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 15:56:56 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:58:35 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,14 @@ typedef struct s_map
 	int		fd;
 	char	**map;
 	char	*line;
+	void	*img_ptr;
+	int		img_width;
+	int		img_height;
 	int		width;
 	int		height;
 	int		counter;
 	int		x;
 	int		y;
-	int		garbage;
-	void	*img_ptr;
-	int		img_width;
-	int		img_height;
 }				t_map;
 
 typedef struct s_game
