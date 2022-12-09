@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 16:02:08 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:42:37 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	init_map(char *map_path, t_map *map)
 {
 	map->fd = open(map_path, O_RDONLY);
 	if (map->fd == -1)
-		return (-1);
+		return (0);
 	get_next_line(map->fd, &map->line);
 	map->width = (ft_strlen(map->line) * SPRITE_SIZE) - SPRITE_SIZE;
 	free(map->line);
@@ -28,7 +28,17 @@ int	init_map(char *map_path, t_map *map)
 	}
 	map->map = (char **)malloc(sizeof(char *) * map->height);
 	map->counter = 0;
+	close(map->fd);
+	if (!create_matrix(map_path, map))
+		return (0);
+	return (1);
+}
+
+int	create_matrix(char *map_path, t_map *map)
+{
 	map->fd = open(map_path, O_RDONLY);
+	if (map->fd == -1)
+		return (0);
 	while (get_next_line(map->fd, &map->line))
 	{
 		map->map[map->counter] = ft_strdup(map->line);
@@ -66,6 +76,8 @@ void	draw_map(t_map *map, t_game *game)
 				draw_xpm(map, game, EXIT);
 			else if (map->map[map->y][map->x] == 'P')
 				draw_xpm(map, game, PLAYER);
+			else
+				exit(1);
 			map->x++;
 		}
 		map->y++;

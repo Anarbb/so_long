@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 16:05:09 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:40:44 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ typedef struct s_game
 
 void	draw_map(t_map *map, t_game *game);
 int		init_map(char *map_path, t_map *map);
+int		create_matrix(char *map_path, t_map *map);
 #endif
