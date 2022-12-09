@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/06 20:58:00 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:48:03 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	init_map(char *map_path, t_map *map)
 	get_next_line(map->fd, &map->line);
 	map->width = (ft_strlen(map->line) * SPRITE_SIZE) - SPRITE_SIZE;
 	free(map->line);
+	map->height = SPRITE_SIZE;
 	while (get_next_line(map->fd, &map->line))
 	{
 		map->height += SPRITE_SIZE;
 		free(map->line);
 	}
-	map->height += SPRITE_SIZE;
 	map->map = (char **)malloc(sizeof(char *) * map->height);
 	map->counter = 0;
 	map->fd = open(map_path, O_RDONLY);
@@ -42,30 +42,32 @@ int	init_map(char *map_path, t_map *map)
 void	draw_xpm(t_map *map, t_game *game, char *block)
 {
 	map->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, block, &map->img_width, &map->img_height);
+		if (!map->img_ptr)
+			exit(0);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->img_ptr, map->x * SPRITE_SIZE, map->y * SPRITE_SIZE);
 }
 
 void	draw_map(t_map *map, t_game *game)
 {
-	map->garbage = 0;
-	// use map->map to draw the map
-	while (map->y < map->height / SPRITE_SIZE + 1)
+	while (map->y < (map->height / SPRITE_SIZE + 1)-1)
 	{
 		map->x = 0;
-		while (map->x < map->width / SPRITE_SIZE + 1)
+		while (map->x < (map->width / SPRITE_SIZE + 1) )
 		{
 			if (map->map[map->y][map->x] == '1')
-				draw_xpm(map, game, "./img/wall.xpm");
+				draw_xpm(map, game, WALL);
+
 			else if (map->map[map->y][map->x] == '0')
-				draw_xpm(map, game, "./img/ground.xpm");
+				draw_xpm(map, game, EMPTY);
 			else if (map->map[map->y][map->x] == 'C')
-				draw_xpm(map, game, "./img/coin.xpm");
+				draw_xpm(map, game, COLLECTIBLE);
 			else if (map->map[map->y][map->x] == 'E')
-				draw_xpm(map, game, "./img/exit.xpm");
+				draw_xpm(map, game, EXIT);
 			else if (map->map[map->y][map->x] == 'P')
-				draw_xpm(map, game, "./img/player.xpm");
+				draw_xpm(map, game, PLAYER);
 			map->x++;
 		}
 		map->y++;
 	}
+
 }
