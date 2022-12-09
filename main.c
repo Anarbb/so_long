@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:50:17 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 15:49:08 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:49:46 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 	t_game	game;
+
 	if (argc != 2)
 		exit(0);
 	map = ft_calloc(sizeof(t_map), 1);

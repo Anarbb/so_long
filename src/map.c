@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 15:48:03 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:51:43 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,23 @@ int	init_map(char *map_path, t_map *map)
 
 void	draw_xpm(t_map *map, t_game *game, char *block)
 {
-	map->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, block, &map->img_width, &map->img_height);
-		if (!map->img_ptr)
-			exit(0);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->img_ptr, map->x * SPRITE_SIZE, map->y * SPRITE_SIZE);
+	map->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, block,
+			&map->img_width, &map->img_height);
+	if (!map->img_ptr)
+		exit(1);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->img_ptr,
+		map->x * SPRITE_SIZE, map->y * SPRITE_SIZE);
 }
 
 void	draw_map(t_map *map, t_game *game)
 {
-	while (map->y < (map->height / SPRITE_SIZE + 1)-1)
+	while (map->y < map->height / SPRITE_SIZE)
 	{
 		map->x = 0;
-		while (map->x < (map->width / SPRITE_SIZE + 1) )
+		while (map->x < map->width / SPRITE_SIZE)
 		{
 			if (map->map[map->y][map->x] == '1')
 				draw_xpm(map, game, WALL);
-
 			else if (map->map[map->y][map->x] == '0')
 				draw_xpm(map, game, EMPTY);
 			else if (map->map[map->y][map->x] == 'C')
@@ -69,5 +70,4 @@ void	draw_map(t_map *map, t_game *game)
 		}
 		map->y++;
 	}
-
 }
