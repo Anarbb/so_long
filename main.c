@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:50:17 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 15:49:46 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:52:15 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 		exit(0);
 	game.mlx_ptr = mlx_init();
 	ft_calloc(1, sizeof(t_game));
-	game.win_ptr = mlx_new_window(game.mlx_ptr, map->width, map->height, "so_pac");
+	game.win_ptr = mlx_new_window(game.mlx_ptr,
+			map->width, map->height, "so_pac");
 	draw_map(map, &game);
 	mlx_loop(game.mlx_ptr);
 }

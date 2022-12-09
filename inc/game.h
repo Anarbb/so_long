@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/06 20:58:20 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:53:45 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,14 @@ typedef struct s_map
 	int		bpp;
 	int		size_l;
 	int		endian;
-	int 	img_width;
-	int 	img_height;
+	int		img_width;
+	int		img_height;
 }				t_map;
 
 typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	
 }				t_game;
 
 void	draw_map(t_map *map, t_game *game);
