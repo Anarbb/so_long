@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 15:53:45 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:56:56 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,11 @@ typedef struct s_map
 	char	*line;
 	int		width;
 	int		height;
-	size_t	counter;
+	int		counter;
 	int		x;
 	int		y;
 	int		garbage;
 	void	*img_ptr;
-	void	*img_data;
-	int		bpp;
-	int		size_l;
-	int		endian;
 	int		img_width;
 	int		img_height;
 }				t_map;
