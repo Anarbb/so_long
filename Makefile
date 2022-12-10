@@ -62,6 +62,8 @@ SRCS        :=      main.c \
                           src/libft/ft_toupper.c \
                           src/libft/ft_arrlen.c \
                           src/map.c \
+                          src/data.c \
+                          src/player.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

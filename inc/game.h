@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 19:22:12 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:39:48 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 typedef struct s_map
 {
 	int		fd;
-	char	**map;
+	char	**matrix;
 	char	*line;
 	void	*img_ptr;
 	int		img_width;
@@ -47,13 +47,6 @@ typedef struct s_map
 	int		x;
 	int		y;
 }				t_map;
-
-typedef struct s_game
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_map	*map;
-}				t_game;
 
 typedef struct s_player
 {
@@ -71,7 +64,21 @@ typedef struct s_enemy
 	char	**sprites;
 }				t_enemy;
 
-void	draw_map(t_map *map, t_game *game);
+typedef struct s_game
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_map		*map;
+	t_player	*player;
+	t_enemy		*enemy;
+	int			coins;
+}				t_game;
+// map.c
 int		init_map(char *map_path, t_map *map);
+void	draw_map(t_map *map, t_game *game);
 int		create_matrix(char *map_path, t_map *map);
+void	destroy_map(t_map *map);
+// player.c
+// data.c
+int		calculate_coins(t_game *game);
 #endif

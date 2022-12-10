@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/09 17:36:54 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:41:45 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_map(char *map_path, t_map *map)
 		map->height += SPRITE_SIZE;
 		free(map->line);
 	}
-	map->map = (char **)malloc(sizeof(char *) * map->height);
+	map->matrix = (char **)malloc(sizeof(char *) * map->height);
 	map->counter = 0;
 	close(map->fd);
 	if (!create_matrix(map_path, map))
@@ -42,7 +42,7 @@ int	create_matrix(char *map_path, t_map *map)
 		return (0);
 	while (get_next_line(map->fd, &map->line))
 	{
-		map->map[map->counter] = ft_strdup(map->line);
+		map->matrix[map->counter] = ft_strdup(map->line);
 		map->counter++;
 		free(map->line);
 	}
@@ -67,22 +67,38 @@ void	draw_map(t_map *map, t_game *game)
 		map->x = 0;
 		while (map->x < map->width / SPRITE_SIZE)
 		{
-			if (map->map[map->y][map->x] == '1')
+			if (map->matrix[map->y][map->x] == '1')
 				draw_xpm(map, game, WALL);
-			else if (map->map[map->y][map->x] == '0')
+			else if (map->matrix[map->y][map->x] == '0')
 				draw_xpm(map, game, EMPTY);
-			else if (map->map[map->y][map->x] == 'C')
+			else if (map->matrix[map->y][map->x] == 'C')
 				draw_xpm(map, game, COLLECTIBLE);
-			else if (map->map[map->y][map->x] == 'E')
+			else if (map->matrix[map->y][map->x] == 'E')
 				draw_xpm(map, game, EXIT);
-			else if (map->map[map->y][map->x] == 'P')
+			else if (map->matrix[map->y][map->x] == 'P')
 				draw_xpm(map, game, PLAYER);
-			else if (map->map[map->y][map->x] == 'G')
+			else if (map->matrix[map->y][map->x] == 'G')
 				draw_xpm(map, game, ENEMY);
 			else
 				exit(1);
 			map->x++;
 		}
 		map->y++;
+	}
+}
+void	destroy_map(t_map *map)
+{
+	// fill map with 0
+	int i = 0;
+	int j = 0;
+	while (map->matrix[i])
+	{
+		while (map->matrix[i][j])
+		{
+			map->matrix[i][j] = '1';
+			j++;
+		}
+		j = 0;
+		i++;
 	}
 }
