@@ -6,99 +6,90 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/10 14:41:45 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:59:20 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/game.h"
 
-int	init_map(char *map_path, t_map *map)
+int	init_map(t_game *game, char *map_path)
 {
-	map->fd = open(map_path, O_RDONLY);
-	if (map->fd == -1)
+	game->map = ft_calloc(1, sizeof(t_map));
+	if (!game->map)
 		return (0);
-	if (!get_next_line(map->fd, &map->line))
+	if (!get_map_size(map_path, game))
 		return (0);
-	map->width = (ft_strlen(map->line) * SPRITE_SIZE) - SPRITE_SIZE;
-	free(map->line);
-	map->height = SPRITE_SIZE;
-	while (get_next_line(map->fd, &map->line))
-	{
-		map->height += SPRITE_SIZE;
-		free(map->line);
-	}
-	map->matrix = (char **)malloc(sizeof(char *) * map->height);
-	map->counter = 0;
-	close(map->fd);
-	if (!create_matrix(map_path, map))
+	game->map->matrix = (char **)malloc(sizeof(char *) * game->map->height);
+	if (!game->map->matrix)
 		return (0);
+	if (!create_matrix(map_path, game))
+		return (0);
+	game->map->matrix[game->map->height] = NULL;
 	return (1);
 }
 
-int	create_matrix(char *map_path, t_map *map)
+int	get_map_size(char *map_path, t_game *game)
 {
-	map->fd = open(map_path, O_RDONLY);
-	if (map->fd == -1)
+	game->map->fd = open(map_path, O_RDONLY);
+	if (game->map->fd == -1)
 		return (0);
-	while (get_next_line(map->fd, &map->line))
+	while (get_next_line(game->map->fd, &game->map->line))
 	{
-		map->matrix[map->counter] = ft_strdup(map->line);
-		map->counter++;
-		free(map->line);
+		game->map->counter++;
+		if (game->map->width == 0)
+			game->map->width = ft_strlen(game->map->line) * SPRITE_SIZE - SPRITE_SIZE;
+		free(game->map->line);
 	}
-	close(map->fd);
+	game->map->height = game->map->counter * SPRITE_SIZE;
+	close(game->map->fd);
 	return (1);
 }
 
-void	draw_xpm(t_map *map, t_game *game, char *block)
+int	create_matrix(char *map_path, t_game *game)
 {
-	map->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, block,
-			&map->img_width, &map->img_height);
-	if (!map->img_ptr)
-		exit(1);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->img_ptr,
-		map->x * SPRITE_SIZE, map->y * SPRITE_SIZE);
+	game->map->fd = open(map_path, O_RDONLY);
+	if (game->map->fd == -1)
+		return (0);
+	while (get_next_line(game->map->fd, &game->map->line))
+	{
+		game->map->matrix[game->map->y] = ft_strdup(game->map->line);
+		if (!game->map->matrix[game->map->y])
+			return (0);
+		free(game->map->line);
+		game->map->y++;
+	}
+	close(game->map->fd);
+	return (1);
 }
 
-void	draw_map(t_map *map, t_game *game)
+void	draw_xpm(t_game **game, char *block)
 {
-	while (map->y < map->height / SPRITE_SIZE)
-	{
-		map->x = 0;
-		while (map->x < map->width / SPRITE_SIZE)
-		{
-			if (map->matrix[map->y][map->x] == '1')
-				draw_xpm(map, game, WALL);
-			else if (map->matrix[map->y][map->x] == '0')
-				draw_xpm(map, game, EMPTY);
-			else if (map->matrix[map->y][map->x] == 'C')
-				draw_xpm(map, game, COLLECTIBLE);
-			else if (map->matrix[map->y][map->x] == 'E')
-				draw_xpm(map, game, EXIT);
-			else if (map->matrix[map->y][map->x] == 'P')
-				draw_xpm(map, game, PLAYER);
-			else if (map->matrix[map->y][map->x] == 'G')
-				draw_xpm(map, game, ENEMY);
-			else
-				exit(1);
-			map->x++;
-		}
-		map->y++;
-	}
+	(*game)->map->img_ptr = mlx_xpm_file_to_image((*game)->mlx_ptr, block, &(*game)->map->img_width, &(*game)->map->img_height);
+	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, (*game)->map->img_ptr, (*game)->map->x * SPRITE_SIZE, (*game)->map->y * SPRITE_SIZE);
 }
-void	destroy_map(t_map *map)
+
+void	draw_map(t_game *game)
 {
-	// fill map with 0
-	int i = 0;
-	int j = 0;
-	while (map->matrix[i])
+	game->map->y = 0;
+	while (game->map->y < game->map->height / SPRITE_SIZE)
 	{
-		while (map->matrix[i][j])
+		game->map->x = 0;
+		while (game->map->x < game->map->width / SPRITE_SIZE)
 		{
-			map->matrix[i][j] = '1';
-			j++;
+			if (game->map->matrix[game->map->y][game->map->x] == '1')
+				draw_xpm(&game, WALL);
+			else if (game->map->matrix[game->map->y][game->map->x] == '0')
+				draw_xpm(&game, EMPTY);
+			else if (game->map->matrix[game->map->y][game->map->x] == 'C')
+				draw_xpm(&game, COLLECTIBLE);
+			else if (game->map->matrix[game->map->y][game->map->x] == 'G')
+				draw_xpm(&game, ENEMY);
+			else if (game->map->matrix[game->map->y][game->map->x] == 'E')
+				draw_xpm(&game, EXIT);
+			else if (game->map->matrix[game->map->y][game->map->x] == 'P')
+				draw_xpm(&game, PLAYER);
+			game->map->x++;
 		}
-		j = 0;
-		i++;
+		game->map->y++;
 	}
 }

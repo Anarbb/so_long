@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:50:17 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/10 14:41:12 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/11 20:15:51 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	if (keycode == 53)
-	{
-		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-	}
-	if (keycode == 13)
-	{
-		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		usleep(100000);
-		draw_map(game->map, game);
-	}
+
 	return (0);
 }
 
@@ -31,16 +22,20 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	if (argc != 2)
-		exit(0);
-	game = (t_game *)ft_calloc(1, sizeof(t_game));
-	if (!init_map(argv[1], game->map))
-		exit(0);
-	game->mlx_ptr = mlx_init();
-	game->win_ptr = mlx_new_window(game->mlx_ptr, game->map->width,
-			game->map->height, "so_long");
-	draw_map(game->map, game);
-	mlx_hook(game->win_ptr, 2, 1L << 0, key_hook, game);
-	mlx_loop(game->mlx_ptr);
+	if (argc == 2)
+	{
+		game = ft_calloc(1, sizeof(t_game));
+		game->mlx_ptr = mlx_init();
+		game->map = ft_calloc(1, sizeof(t_map));
+		if (!init_map(game, argv[1]))
+			return (0);
+		game->win_ptr = mlx_new_window(game->mlx_ptr, game->map->width, game->map->height, "so_long");
+		draw_map(game);
+		mlx_key_hook(game->win_ptr, key_hook, game);
+		mlx_loop(game->mlx_ptr);
+	}
+	else
+		printf("Error\n");
 	return (0);
 }
+ 

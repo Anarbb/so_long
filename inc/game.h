@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/10 14:39:48 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:55:29 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # include <fcntl.h>
 
 # define SPRITE_SIZE 32
-# define WALL "./sprites/Other/Walls/wall.xpm"
-# define EMPTY "./sprites/Other/Walls/black.xpm"
-# define COLLECTIBLE "./sprites/Other/Pacdots/pacdot_food.xpm"
-# define PLAYER "./sprites/Pac-Man/pac_open_left.xpm"
-# define ENEMY "./sprites/Ghosts/B/ghost_up1.xpm"
-# define EXIT "./sprites/Other/Portal/portal.xpm"
+# define WALL "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/wall.xpm"
+# define EMPTY "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/black.xpm"
+# define COLLECTIBLE "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Pacdots/pacdot_food.xpm"
+# define PLAYER "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_open_right.xpm"
+# define ENEMY "/Users/aarbaoui/Documents/1337/so_long/sprites/Ghosts/B/ghost_down1.xpm"
+# define EXIT "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Portal/portal.xpm"
 
 typedef struct s_map
 {
@@ -54,14 +54,14 @@ typedef struct s_player
 	int		y;
 	int		score;
 	int		lives;
-	char	**sprites;
+	t_list	sprites;
 }				t_player;
 
 typedef struct s_enemy
 {
 	int		x;
 	int		y;
-	char	**sprites;
+	t_list	sprites;
 }				t_enemy;
 
 typedef struct s_game
@@ -74,10 +74,11 @@ typedef struct s_game
 	int			coins;
 }				t_game;
 // map.c
-int		init_map(char *map_path, t_map *map);
-void	draw_map(t_map *map, t_game *game);
-int		create_matrix(char *map_path, t_map *map);
-void	destroy_map(t_map *map);
+int		init_map(t_game *game, char *map_path);
+void	draw_map(t_game *game);
+void	draw_xpm(t_game **game, char *block);
+int		create_matrix(char *map_path, t_game *game);
+int		get_map_size(char *map_path, t_game *game);
 // player.c
 // data.c
 int		calculate_coins(t_game *game);
