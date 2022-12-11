@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/11 18:55:29 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:41:59 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ typedef struct s_player
 	int		y;
 	int		score;
 	int		lives;
+	void	*img;
+	int		width;
+	int		height;
+	void	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	t_list	sprites;
 }				t_player;
 
@@ -80,6 +87,7 @@ void	draw_xpm(t_game **game, char *block);
 int		create_matrix(char *map_path, t_game *game);
 int		get_map_size(char *map_path, t_game *game);
 // player.c
-// data.c
-int		calculate_coins(t_game *game);
+void	init_player(t_game *game);
+void	get_players_cords(t_game *game);
+int	move_player(int keynum, t_game *game);
 #endif
