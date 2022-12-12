@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ven <aarbaoui@student.1337.ma>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/11 21:41:59 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:01:28 by ven              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # include <fcntl.h>
 
 # define SPRITE_SIZE 32
-# define WALL "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/wall.xpm"
-# define EMPTY "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/black.xpm"
-# define COLLECTIBLE "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Pacdots/pacdot_food.xpm"
-# define PLAYER "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_open_right.xpm"
-# define ENEMY "/Users/aarbaoui/Documents/1337/so_long/sprites/Ghosts/B/ghost_down1.xpm"
-# define EXIT "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Portal/portal.xpm"
+# define WALL "sprites/Other/Walls/wall.xpm"
+# define EMPTY "sprites/Other/Walls/black.xpm"
+# define COLLECTIBLE "sprites/Other/Pacdots/pacdot_food.xpm"
+# define PLAYER "sprites/Pac-Man/pac_open_right.xpm"
+# define ENEMY "sprites/Ghosts/B/ghost_down1.xpm"
+# define EXIT "sprites/Other/Portal/portal.xpm"
 
 typedef struct s_map
 {
