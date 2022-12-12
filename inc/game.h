@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ven <aarbaoui@student.1337.ma>             +#+  +:+       +#+        */
+/*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/12 12:01:28 by ven              ###   ########.fr       */
+/*   Updated: 2022/12/12 15:49:37 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # include <fcntl.h>
 
 # define SPRITE_SIZE 32
-# define WALL "sprites/Other/Walls/wall.xpm"
-# define EMPTY "sprites/Other/Walls/black.xpm"
-# define COLLECTIBLE "sprites/Other/Pacdots/pacdot_food.xpm"
-# define PLAYER "sprites/Pac-Man/pac_open_right.xpm"
-# define ENEMY "sprites/Ghosts/B/ghost_down1.xpm"
-# define EXIT "sprites/Other/Portal/portal.xpm"
+# define WALL "./sprites/Other/Walls/wall.xpm"
+# define EMPTY "./sprites/Other/Walls/black.xpm"
+# define COLLECTIBLE "./sprites/Other/Pacdots/pacdot_food.xpm"
+# define PLAYER "./sprites/Pac-Man/pac_open_right.xpm"
+# define ENEMY "./sprites/Ghosts/B/ghost_down1.xpm"
+# define EXIT "./sprites/Other/Portal/portal.xpm"
 
 typedef struct s_map
 {
@@ -61,6 +61,10 @@ typedef struct s_player
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		go_up;
+	int		go_down;
+	int		go_left;
+	int		go_right;
 	t_list	sprites;
 }				t_player;
 

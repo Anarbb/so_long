@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/12 14:30:58 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:56:10 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	init_map(t_game *game, char *map_path)
 		return (0);
 	if (!get_map_size(map_path, game))
 		return (0);
-	game->map->matrix = (char **)malloc(sizeof(char *) * game->map->height);
+	game->map->matrix = (char **)malloc(sizeof(char *) * game->map->height / SPRITE_SIZE + 1);
 	if (!game->map->matrix)
 		return (0);
 	if (!create_matrix(map_path, game))
@@ -37,7 +37,8 @@ int	get_map_size(char *map_path, t_game *game)
 	{
 		game->map->counter++;
 		if (game->map->width == 0)
-			game->map->width = ft_strlen(game->map->line) * SPRITE_SIZE - SPRITE_SIZE;
+			game->map->width = ft_strlen(game->map->line)
+				* SPRITE_SIZE - SPRITE_SIZE;
 		free(game->map->line);
 	}
 	game->map->height = game->map->counter * SPRITE_SIZE;
@@ -64,8 +65,11 @@ int	create_matrix(char *map_path, t_game *game)
 
 void	draw_xpm(t_game **game, char *block)
 {
-	(*game)->map->img_ptr = mlx_xpm_file_to_image((*game)->mlx_ptr, block, &(*game)->map->img_width, &(*game)->map->img_height);
-	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, (*game)->map->img_ptr, (*game)->map->x * SPRITE_SIZE, (*game)->map->y * SPRITE_SIZE);
+	(*game)->map->img_ptr = mlx_xpm_file_to_image((*game)->mlx_ptr,
+			block, &(*game)->map->img_width, &(*game)->map->img_height);
+	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
+		(*game)->map->img_ptr, (*game)->map->x * SPRITE_SIZE,
+		(*game)->map->y * SPRITE_SIZE);
 	mlx_destroy_image((*game)->mlx_ptr, (*game)->map->img_ptr);
 }
 
@@ -88,7 +92,7 @@ void	draw_map(t_game *game)
 			else if (game->map->matrix[game->map->y][game->map->x] == 'E')
 				draw_xpm(&game, EXIT);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'P')
-				draw_xpm(&game, PLAYER);
+				draw_xpm(&game, game->player->img);
 			game->map->x++;
 		}
 		game->map->y++;

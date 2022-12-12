@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ven <aarbaoui@student.1337.ma>             +#+  +:+       +#+        */
+/*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:40:29 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/12 12:06:00 by ven              ###   ########.fr       */
+/*   Updated: 2022/12/12 16:31:28 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_player(t_game *game)
 	game->player = ft_calloc(1, sizeof(t_player));
 	get_players_cords(game);
 	game->player->img = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER, &game->player->width, &game->player->height);
-	game->player->addr = mlx_get_data_addr(game->player->img, &game->player->bits_per_pixel, &game->player->line_length, &game->player->endian);
+	ft_lstnew(game->player->img);
 }
 
 void	get_players_cords(t_game *game)
@@ -42,10 +42,33 @@ void	get_players_cords(t_game *game)
 	}
 }
 
+void	check_legal(t_game *game)
+{
+	if (game->map->matrix[(game->player->y - 1)][(game->player->x)] == '1')
+		game->player->go_up = 0;
+	else
+		game->player->go_up = 1;
+	if (game->map->matrix[(game->player->y + 1)][(game->player->x)] == '1')
+		game->player->go_down = 0;
+	else
+		game->player->go_down = 1;
+	if (game->map->matrix[(game->player->y)][(game->player->x - 1)] == '1')
+		game->player->go_left = 0;
+	else
+		game->player->go_left = 1;
+	if (game->map->matrix[(game->player->y)][(game->player->x + 1)] == '1')
+		game->player->go_right = 0;
+	else
+		game->player->go_right = 1;
+}
+
 int	move_player(int keynum, t_game *game)
 {
+	check_legal(game);
 	if (keynum == 13 || keynum == 119)
 	{
+		if (game->player->go_up == 0)
+			return (0);
 		game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 		game->map->matrix[(game->player->y - 1)][(game->player->x)] = 'P';
 		game->player->y -= 1;
@@ -55,6 +78,8 @@ int	move_player(int keynum, t_game *game)
 	}
 	if (keynum == 1 || keynum == 115)
 	{
+		if (game->player->go_down == 0)
+			return (0);
 		game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 		game->map->matrix[(game->player->y + 1)][(game->player->x)] = 'P';
 		game->player->y += 1;
@@ -64,6 +89,8 @@ int	move_player(int keynum, t_game *game)
 	}
 	if (keynum == 0 || keynum == 97)
 	{
+		if (game->player->go_left == 0)
+			return (0);
 		game->map->matrix[(game->player->y)][(game->player->x) ] = '0';
 		game->map->matrix[(game->player->y)][(game->player->x - 1)] = 'P';
 		game->player->x -= 1;
@@ -73,6 +100,8 @@ int	move_player(int keynum, t_game *game)
 	}
 	if (keynum == 2 || keynum == 100)
 	{
+		if (game->player->go_right == 0)
+			return (0);
 		game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 		game->map->matrix[(game->player->y)][(game->player->x + 1)] = 'P';
 		game->player->x += 1;
