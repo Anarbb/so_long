@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/11 21:26:51 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:30:58 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	draw_xpm(t_game **game, char *block)
 {
 	(*game)->map->img_ptr = mlx_xpm_file_to_image((*game)->mlx_ptr, block, &(*game)->map->img_width, &(*game)->map->img_height);
 	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, (*game)->map->img_ptr, (*game)->map->x * SPRITE_SIZE, (*game)->map->y * SPRITE_SIZE);
+	mlx_destroy_image((*game)->mlx_ptr, (*game)->map->img_ptr);
 }
 
 void	draw_map(t_game *game)
