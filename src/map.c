@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/12 16:56:10 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:23:18 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	draw_map(t_game *game)
 			else if (game->map->matrix[game->map->y][game->map->x] == 'E')
 				draw_xpm(&game, EXIT);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'P')
-				draw_xpm(&game, game->player->img);
+				draw_xpm(&game, PLAYER);
 			game->map->x++;
 		}
 		game->map->y++;
