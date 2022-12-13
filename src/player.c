@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:40:29 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/12 16:31:28 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:44:09 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,47 +67,17 @@ int	move_player(int keynum, t_game *game)
 	check_legal(game);
 	if (keynum == 13 || keynum == 119)
 	{
-		if (game->player->go_up == 0)
-			return (0);
-		game->map->matrix[(game->player->y)][(game->player->x)] = '0';
-		game->map->matrix[(game->player->y - 1)][(game->player->x)] = 'P';
-		game->player->y -= 1;
-		ft_putstr_fd("up" , 1);
-		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		draw_map(game);
+		while (game->player->go_up == 1)
+		{
+			check_legal(game);
+			move_up(game);
+		}
 	}
 	if (keynum == 1 || keynum == 115)
-	{
-		if (game->player->go_down == 0)
-			return (0);
-		game->map->matrix[(game->player->y)][(game->player->x)] = '0';
-		game->map->matrix[(game->player->y + 1)][(game->player->x)] = 'P';
-		game->player->y += 1;
-		ft_putstr_fd("down" , 1);
-		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		draw_map(game);
-	}
+		move_down(game);
 	if (keynum == 0 || keynum == 97)
-	{
-		if (game->player->go_left == 0)
-			return (0);
-		game->map->matrix[(game->player->y)][(game->player->x) ] = '0';
-		game->map->matrix[(game->player->y)][(game->player->x - 1)] = 'P';
-		game->player->x -= 1;
-		ft_putstr_fd("left",1 );
-		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		draw_map(game);
-	}
+		move_left(game);
 	if (keynum == 2 || keynum == 100)
-	{
-		if (game->player->go_right == 0)
-			return (0);
-		game->map->matrix[(game->player->y)][(game->player->x)] = '0';
-		game->map->matrix[(game->player->y)][(game->player->x + 1)] = 'P';
-		game->player->x += 1;
-		ft_putstr_fd("right", 1);
-		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		draw_map(game);
-	}
+		move_right(game);
 	return (0);
 }

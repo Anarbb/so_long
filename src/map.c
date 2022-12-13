@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/13 13:23:18 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:43:16 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ void	draw_map(t_game *game)
 			else if (game->map->matrix[game->map->y][game->map->x] == '0')
 				draw_xpm(&game, EMPTY);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'C')
+			{
+				game->map->coins++;
 				draw_xpm(&game, COLLECTIBLE);
+			}
 			else if (game->map->matrix[game->map->y][game->map->x] == 'G')
 				draw_xpm(&game, ENEMY);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'E')

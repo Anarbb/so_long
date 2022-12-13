@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/12 15:49:37 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:43:04 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_map
 	int		counter;
 	int		x;
 	int		y;
+	int		coins;
 }				t_map;
 
 typedef struct s_player
@@ -82,7 +83,9 @@ typedef struct s_game
 	t_map		*map;
 	t_player	*player;
 	t_enemy		*enemy;
-	int			coins;
+	int			coins_counter;
+	int			moves;
+	
 }				t_game;
 // map.c
 int		init_map(t_game *game, char *map_path);
@@ -93,5 +96,11 @@ int		get_map_size(char *map_path, t_game *game);
 // player.c
 void	init_player(t_game *game);
 void	get_players_cords(t_game *game);
-int	move_player(int keynum, t_game *game);
+int		move_player(int keynum, t_game *game);
+void	check_legal(t_game *game);
+// move.c
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
 #endif
