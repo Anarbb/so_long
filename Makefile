@@ -64,6 +64,7 @@ SRCS        :=      main.c \
                           src/map.c \
                           src/player.c \
                           src/move.c \
+                          src/misc.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

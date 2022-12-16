@@ -6,18 +6,21 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:40:29 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/13 16:44:09 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:30:24 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
+// q: where does the leak happen here?
+// a: the leak happens in the mlx_xpm_file_to_image function
 void	init_player(t_game *game)
 {
 	game->player = ft_calloc(1, sizeof(t_player));
 	get_players_cords(game);
-	game->player->img = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER, &game->player->width, &game->player->height);
-	ft_lstnew(game->player->img);
+	game->player->img = mlx_xpm_file_to_image(game->mlx_ptr,
+			PLAYER, &game->player->width, &game->player->height);
+	// ft_lstnew(game->player->img);
+	mlx_destroy_image(game->mlx_ptr, game->player->img);
 }
 
 void	get_players_cords(t_game *game)
@@ -35,6 +38,10 @@ void	get_players_cords(t_game *game)
 			{
 				game->player->x = j;
 				game->player->y = i;
+			}
+			if (game->map->matrix[i][j] == 'C')
+			{
+				game->map->coins++;
 			}
 			j++;
 		}
@@ -66,13 +73,7 @@ int	move_player(int keynum, t_game *game)
 {
 	check_legal(game);
 	if (keynum == 13 || keynum == 119)
-	{
-		while (game->player->go_up == 1)
-		{
-			check_legal(game);
-			move_up(game);
-		}
-	}
+		move_up(game);
 	if (keynum == 1 || keynum == 115)
 		move_down(game);
 	if (keynum == 0 || keynum == 97)

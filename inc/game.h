@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/13 16:43:04 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:59:57 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@
 # define PLAYER "./sprites/Pac-Man/pac_open_right.xpm"
 # define ENEMY "./sprites/Ghosts/B/ghost_down1.xpm"
 # define EXIT "./sprites/Other/Portal/portal.xpm"
+# define ZERO "./sprites/Other/Fonts/0.xpm"
+# define ONE "./sprites/Other/Fonts/1.xpm"
+# define TWO "./sprites/Other/Fonts/2.xpm"
+# define THREE "./sprites/Other/Fonts/3.xpm"
+# define FOUR "./sprites/Other/Fonts/4.xpm"
+# define FIVE "./sprites/Other/Fonts/5.xpm"
+# define SIX "./sprites/Other/Fonts/6.xpm"
+# define SEVEN "./sprites/Other/Fonts/7.xpm"
+# define EIGHT "./sprites/Other/Fonts/8.xpm"
+# define NINE "./sprites/Other/Fonts/9.xpm"
+
 
 typedef struct s_map
 {
@@ -47,6 +58,7 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		coins;
+	int		coins_counter;
 }				t_map;
 
 typedef struct s_player
@@ -83,14 +95,13 @@ typedef struct s_game
 	t_map		*map;
 	t_player	*player;
 	t_enemy		*enemy;
-	int			coins_counter;
 	int			moves;
 	
 }				t_game;
 // map.c
 int		init_map(t_game *game, char *map_path);
 void	draw_map(t_game *game);
-void	draw_xpm(t_game **game, char *block);
+void	draw_xpm(t_game **game, char *block, int x, int y);
 int		create_matrix(char *map_path, t_game *game);
 int		get_map_size(char *map_path, t_game *game);
 // player.c
@@ -103,4 +114,6 @@ void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
+// misc.c
+void	draw_score(t_game *game);
 #endif
