@@ -65,6 +65,7 @@ SRCS        :=      main.c \
                           src/player.c \
                           src/move.c \
                           src/misc.c \
+                          src/check.c \
                           
 OBJS        := $(SRCS:.c=.o)
 
