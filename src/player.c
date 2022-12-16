@@ -6,20 +6,18 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:40:29 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/15 19:30:24 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:28:46 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-// q: where does the leak happen here?
-// a: the leak happens in the mlx_xpm_file_to_image function
+
 void	init_player(t_game *game)
 {
 	game->player = ft_calloc(1, sizeof(t_player));
 	get_players_cords(game);
 	game->player->img = mlx_xpm_file_to_image(game->mlx_ptr,
 			PLAYER, &game->player->width, &game->player->height);
-	// ft_lstnew(game->player->img);
 	mlx_destroy_image(game->mlx_ptr, game->player->img);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/15 16:59:57 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:11:31 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,6 @@ void	move_left(t_game *game);
 void	move_right(t_game *game);
 // misc.c
 void	draw_score(t_game *game);
+// check.c
+int		check_map(t_game *game);
 #endif

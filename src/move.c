@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:52:44 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/15 18:33:56 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:28:33 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_up(t_game *game)
 {
-	if (game->player->go_up == 0)
+	if (!game->player->go_up)
 		return ;
 	game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 	if (game->map->matrix[(game->player->y - 1)][(game->player->x)] == 'C')
@@ -28,7 +28,7 @@ void	move_up(t_game *game)
 
 void	move_down(t_game *game)
 {
-	if (game->player->go_down == 0)
+	if (!game->player->go_down)
 		return ;
 	game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 	if (game->map->matrix[(game->player->y + 1)][(game->player->x)] == 'C')
@@ -63,7 +63,7 @@ void	move_left(t_game *game)
 
 void	move_right(t_game *game)
 {
-	if (game->player->go_right == 0)
+	if (!game->player->go_right)
 		return ;
 	game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 	if (game->map->matrix[(game->player->y)][(game->player->x + 1)] == 'C')
