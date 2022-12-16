@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/15 19:06:14 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:05:46 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	init_map(t_game *game, char *map_path)
 		return (0);
 	if (!create_matrix(map_path, game))
 		return (0);
-	// game->map->matrix[game->map->height] = NULL;
-	fprintf(stderr, "height: %d", game->map->height / 32 + 1);
 	return (1);
 }
 
