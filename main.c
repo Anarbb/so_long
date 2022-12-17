@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:57:56 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/17 17:38:48 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:43:13 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		init_img(game);
 		init_player(game);
 		draw_map(game);
-		mlx_key_hook(game->win_ptr, move_player, game);
+		mlx_hook(game->win_ptr, 2, 1L << 0, move_player, game);
 		mlx_loop(game->mlx_ptr);
 	}
 	else
