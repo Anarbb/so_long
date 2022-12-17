@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/17 16:38:37 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:38:39 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ typedef struct s_map
 	int		y;
 	int		coins;
 	int		coins_counter;
+	void	*wall_img;
+	void	*empty_img;
+	void	*collectible_img;
+	void	*exit_img;
 }				t_map;
 
 typedef struct s_player
@@ -101,7 +105,7 @@ typedef struct s_game
 // map.c
 int		init_map(t_game *game, char *map_path);
 void	draw_map(t_game *game);
-void	draw_xpm(t_game **game, char *block, int x, int y);
+void	draw_xpm(t_game **game, void *img, int x, int y);
 int		create_matrix(char *map_path, t_game *game);
 int		get_map_size(char *map_path, t_game *game);
 // player.c
@@ -118,4 +122,6 @@ void	move_right(t_game *game);
 void	draw_score(t_game *game);
 // check.c
 void	check_map(t_game *game);
+// image.c
+void	init_img(t_game *game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:40:29 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/17 15:53:58 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:39:43 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ void	init_player(t_game *game)
 {
 	game->player = ft_calloc(1, sizeof(t_player));
 	get_players_cords(game);
-	// game->player->img = mlx_xpm_file_to_image(game->mlx_ptr,
-	// 		PLAYER, &game->player->width, &game->player->height);
-	// mlx_destroy_image(game->mlx_ptr, game->player->img);
+	game->player->img = mlx_xpm_file_to_image(game->mlx_ptr,
+			PLAYER, &game->player->width, &game->player->height);
 }
 
 void	get_players_cords(t_game *game)

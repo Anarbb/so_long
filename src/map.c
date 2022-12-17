@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/16 15:05:46 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:40:05 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,10 @@ int	create_matrix(char *map_path, t_game *game)
 	return (1);
 }
 
-void	draw_xpm(t_game **game, char *block, int x, int y)
+void	draw_xpm(t_game **game, void *img, int x, int y)
 {
-	(*game)->map->img_ptr = mlx_xpm_file_to_image((*game)->mlx_ptr,
-			block, &(*game)->map->img_width, &(*game)->map->img_height);
 	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
-		(*game)->map->img_ptr, x, y);
-	mlx_destroy_image((*game)->mlx_ptr, (*game)->map->img_ptr);
+		img, x, y);
 }
 
 void	draw_map(t_game *game)
@@ -83,22 +80,22 @@ void	draw_map(t_game *game)
 		while (game->map->x < game->map->width / SPRITE_SIZE)
 		{
 			if (game->map->matrix[game->map->y][game->map->x] == '1')
-				draw_xpm(&game, WALL, game->map->x * SPRITE_SIZE,
+				draw_xpm(&game, game->map->wall_img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			else if (game->map->matrix[game->map->y][game->map->x] == '0')
-				draw_xpm(&game, EMPTY, game->map->x * SPRITE_SIZE,
+				draw_xpm(&game, game->map->empty_img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'C')
-				draw_xpm(&game, COLLECTIBLE, game->map->x * SPRITE_SIZE,
+				draw_xpm(&game, game->map->collectible_img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'G')
-				draw_xpm(&game, ENEMY, game->map->x * SPRITE_SIZE,
+				draw_xpm(&game, game->map->empty_img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'E')
-				draw_xpm(&game, EXIT, game->map->x * SPRITE_SIZE,
+				draw_xpm(&game, game->map->exit_img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'P')
-				draw_xpm(&game, PLAYER, game->map->x * SPRITE_SIZE,
+				draw_xpm(&game, game->player->img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			game->map->x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:57:56 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/17 16:39:19 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:38:48 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 			return (0);
 		check_map(game);
 		game->win_ptr = mlx_new_window(game->mlx_ptr, game->map->width, game->map->height + 64, "so_long");
+		init_img(game);
 		init_player(game);
 		draw_map(game);
 		mlx_key_hook(game->win_ptr, move_player, game);
