@@ -6,37 +6,43 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/16 16:32:01 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:38:26 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-static int	check_rect(t_game *game)
+static void	check_rect(t_game *game)
 {
-	int	comp1;
-	int	comp2;
 	int	i;
-	
+	int	err;
+
+	err = 0;
 	i = 0;
-	while (game->map->matrix[i] && game->map->matrix[i + 1])
+	while (i < game->map->height / SPRITE_SIZE)
 	{
-		if (!game->map->matrix[i + 2])
-			comp1 = ft_strlen(game->map->matrix[i]) - 1;
-		else
-			comp1 = ft_strlen(game->map->matrix[i]);
-		comp2 = ft_strlen(game->map->matrix[i + 1]);
-		if (comp1 != comp2)
-			return (0);
+		if (game->map->matrix[i][0] != '1' || game->map->matrix[i][game->map->width / SPRITE_SIZE - 1] != '1')
+			err++;
 		i++;
 	}
-	return (1);
+	i = 0;
+	while (i < game->map->width / SPRITE_SIZE)
+	{
+		if (game->map->matrix[0][i] != '1' || game->map->matrix[game->map->height / SPRITE_SIZE - 1][i] != '1')
+			err++;
+		i++;
+	}
+	if (err > 0)
+		{
+			ft_putstr_fd("Error : Map is not closed\n", 1);
+			exit(0);
+		}
 }
 
 
-int check_map(t_game *game)
+
+void	check_map(t_game *game)
 {
-	if (!check_rect(game))
-		return (0);
-	return (1);
+	check_rect(game);
+	
 }
