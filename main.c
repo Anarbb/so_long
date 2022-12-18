@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:57:56 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/18 13:57:29 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:30:13 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(int argc, char **argv)
 		game->mlx_ptr = mlx_init();		
 		if (!init_map(game, argv[1]))
 			return (0);
-		init_img(game);
 		game->win_ptr = mlx_new_window(game->mlx_ptr, game->map->width, game->map->height + 64, "so_long");
+		init_img(game);
 		init_player(game);
 		check_map(game);
 		draw_map(game);
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		mlx_loop(game->mlx_ptr);
 	}
 	else
-		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("Error ./so_long <map_path>\n", 1);
 	return (0);
 }
  
