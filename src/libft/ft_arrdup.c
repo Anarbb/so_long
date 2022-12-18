@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:35:40 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/18 13:40:35 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:31:28 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	**ft_arrdup(char **arr)
 {
 	int		i;
-	int		j;
 	char	**str;
 
 	j = 0;
