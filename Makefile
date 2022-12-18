@@ -61,6 +61,8 @@ SRCS        :=      main.c \
                           src/libft/ft_tolower.c \
                           src/libft/ft_toupper.c \
                           src/libft/ft_arrlen.c \
+                          src/libft/ft_arrdup.c \
+                          src/libft/ft_free_arr.c \
                           src/map.c \
                           src/player.c \
                           src/move.c \

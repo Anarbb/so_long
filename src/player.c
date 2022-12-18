@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 18:40:29 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/17 17:42:59 by aarbaoui         ###   ########.fr       */
+/*   Created: 2022/12/18 14:02:51 by aarbaoui          #+#    #+#             */
+/*   Updated: 2022/12/18 14:02:52 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,17 @@ void	init_player(t_game *game)
 {
 	game->player = ft_calloc(1, sizeof(t_player));
 	get_players_cords(game);
-	game->player->img = mlx_xpm_file_to_image(game->mlx_ptr,
-			PLAYER, &game->player->width, &game->player->height);
+	game->player->img_up = mlx_xpm_file_to_image(game->mlx_ptr,
+			PLAYER_UP, &game->player->width, &game->player->height);
+	game->player->img_down = mlx_xpm_file_to_image(game->mlx_ptr,
+			PLAYER_DOWN, &game->player->width, &game->player->height);
+	game->player->img_left = mlx_xpm_file_to_image(game->mlx_ptr,
+			PLAYER_LEFT, &game->player->width, &game->player->height);
+	game->player->img_right = mlx_xpm_file_to_image(game->mlx_ptr,
+			PLAYER_RIGHT, &game->player->width, &game->player->height);
+	game->player->img_closed = mlx_xpm_file_to_image(game->mlx_ptr,
+			PLAYER_CLOSED, &game->player->width, &game->player->height);
+	game->player->img = game->player->img_left;
 }
 
 void	get_players_cords(t_game *game)
@@ -65,6 +74,11 @@ void	check_legal(t_game *game)
 	else
 		game->player->go_right = 1;
 }
+
+// void	animate_player(t_game *game)
+// {
+
+// }
 
 int	move_player(int keynum, t_game *game)
 {
