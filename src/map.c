@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/17 17:40:05 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:38:43 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,6 @@ int	create_matrix(char *map_path, t_game *game)
 	return (1);
 }
 
-void	draw_xpm(t_game **game, void *img, int x, int y)
-{
-	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
-		img, x, y);
-}
 
 void	draw_map(t_game *game)
 {
@@ -88,14 +83,14 @@ void	draw_map(t_game *game)
 			else if (game->map->matrix[game->map->y][game->map->x] == 'C')
 				draw_xpm(&game, game->map->collectible_img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
-			else if (game->map->matrix[game->map->y][game->map->x] == 'G')
-				draw_xpm(&game, game->map->empty_img, game->map->x * SPRITE_SIZE,
-					game->map->y * SPRITE_SIZE);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'E')
 				draw_xpm(&game, game->map->exit_img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			else if (game->map->matrix[game->map->y][game->map->x] == 'P')
 				draw_xpm(&game, game->player->img, game->map->x * SPRITE_SIZE,
+					game->map->y * SPRITE_SIZE);
+			else if (game->map->matrix[game->map->y][game->map->x] == 'G')
+				draw_xpm(&game, game->enemy->img, game->map->x * SPRITE_SIZE,
 					game->map->y * SPRITE_SIZE);
 			game->map->x++;
 		}

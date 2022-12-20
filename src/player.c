@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:02:51 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/18 14:02:52 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:22:54 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,14 @@ void	get_players_cords(t_game *game)
 		{
 			if (game->map->matrix[i][j] == 'P')
 			{
+				game->player->count++;
 				game->player->x = j;
 				game->player->y = i;
 			}
 			if (game->map->matrix[i][j] == 'C')
-			{
 				game->map->coins++;
-			}
+			if (game->map->matrix[i][j] == 'E')
+				game->map->exits++;
 			j++;
 		}
 		i++;
@@ -74,11 +75,6 @@ void	check_legal(t_game *game)
 	else
 		game->player->go_right = 1;
 }
-
-// void	animate_player(t_game *game)
-// {
-
-// }
 
 int	move_player(int keynum, t_game *game)
 {

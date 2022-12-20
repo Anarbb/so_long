@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:13:45 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/18 14:03:06 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:22:50 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,22 @@ int	check_exit(t_game *game)
 		exit(0);
 	}
 	return (0);
+}
+
+int	check_move(char **matrix, int x, int y)
+{
+	int	x_len;
+	int	y_len;
+
+	x_len = ft_strlen(matrix[0]);
+	y_len = ft_arrlen(matrix);
+	if ((x >= 0 && x < x_len && y >= 0 && y < y_len && matrix[y][x] != '1'))
+		return (1);
+	return (0);
+}
+
+void	draw_xpm(t_game **game, void *img, int x, int y)
+{
+	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
+		img, x, y);
 }

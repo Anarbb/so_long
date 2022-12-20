@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/18 14:51:02 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:22:04 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,12 @@ static void	check_rect(t_game *game)
 	}
 }
 
-static int	check_move(char **matrix, int x, int y)
-{
-	int	x_len;
-	int	y_len;
-
-	x_len = ft_strlen(matrix[0]);
-	y_len = ft_arrlen(matrix);
-	if ((x >= 0 && x < x_len && y >= 0 && y < y_len && matrix[y][x] != '1'))
-		return (1);
-	return (0);
-}
 
 static int	find_path(char **matrix, int x, int y, int coins)
 {
 	static int	exits;
 	static int	c;
-
+	
 	if (matrix[y][x] == 'E')
 		exits++;
 	if (matrix[y][x] == 'C')
@@ -93,8 +82,38 @@ static void	backtracking(t_game *game)
 	ft_free_arr(str);
 }
 
+void	check_path(char *s)
+{
+	char	*tmp;
+	char	empty[5];
+	int		i;
+	int		j;
+
+	tmp = s;
+	j = 0;
+	i = ft_strlen(s);
+	if (i < 4)
+		return ;
+	tmp += i - 1;
+	while (j < 4)
+	{
+		empty[j] = *tmp;
+		j++;
+		tmp--;	
+	}
+	empty[4] = 0;
+	if (ft_strncmp(empty, "reb.", 4))
+	{
+		ft_putstr_fd("Error : Invalid map name.\n", 1);
+		exit(0);
+	}
+}
+
 void	check_map(t_game *game)
 {
+	if ((game->map->exits > 1 || game->player->count > 1)
+		&& (game->map->exits && game->player->count))
+		exit(0);
 	check_rect(game);
 	backtracking(game);
 }
