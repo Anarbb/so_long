@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:13:45 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/20 18:17:38 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:22:32 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	draw_score(t_game *game)
 	char	*moves;
 
 	moves = ft_itoa(game->moves);
-	x = (game->map->x / 2) * SPRITE_SIZE;
-	y = game->map->y * SPRITE_SIZE + 32;
+	x = (game->map->x / 2) * SS;
+	y = game->map->y * SS + 32;
 	mlx_string_put(game->mlx_ptr, game->win_ptr, x, y, 0xFFFFFF, "Moves: ");
 	mlx_string_put(game->mlx_ptr, game->win_ptr, x + 64, y, 0xFFFFFF, moves);
 	free(moves);

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 13:51:36 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:22:32 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	get_enemy_cords(t_game *game)
 	int	j;
 
 	i = 0;
-	while (i < game->map->height / SPRITE_SIZE)
+	while (i < game->map->height / SS)
 	{
 		j = 0;
-		while (j < game->map->width / SPRITE_SIZE)
+		while (j < game->map->width / SS)
 		{
 			if (game->map->matrix[i][j] == 'G')
 			{

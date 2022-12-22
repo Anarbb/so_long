@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 13:38:58 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:22:32 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ static void	check_rect(t_game *game)
 
 	err = 0;
 	i = 0;
-	while (i < game->map->height / SPRITE_SIZE)
+	while (i < game->map->height / SS)
 	{
 		if (game->map->matrix[i][0] != '1'
-			|| game->map->matrix[i][game->map->width / SPRITE_SIZE - 1] != '1')
+			|| game->map->matrix[i][game->map->width / SS - 1] != '1')
 			err++;
 		i++;
 	}
 	i = 0;
-	while (i < game->map->width / SPRITE_SIZE)
+	while (i < game->map->width / SS)
 	{
 		if (game->map->matrix[0][i] != '1'
-			|| game->map->matrix[game->map->height / SPRITE_SIZE - 1][i] != '1')
+			|| game->map->matrix[game->map->height / SS - 1][i] != '1')
 			err++;
 		i++;
 	}
@@ -115,8 +115,11 @@ void	check_map(t_game *game)
 	if ((game->map->exits > 1 || game->player->count > 1)
 		&& (game->map->exits && game->player->count))
 		exit(0);
-	if (game->map->matrix[0] == NULL)
-		exit(0);
+	if (!game->map->matrix[0])
+	{
+			ft_putstr_fd("Error : Map is not valid\n", 1);
+			exit(0);
+	}
 	check_rect(game);
 	backtracking(game);
 }

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:57:56 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/20 16:31:19 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:01:46 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	main(int argc, char **argv)
 		game = ft_calloc(1, sizeof(t_game));
 		game->mlx_ptr = mlx_init();
 		if (!init_map(game, argv[1]))
-			return (0);
+		{
+			ft_putstr_fd("Error : Can't parse the map properly.", 1);
+			exit(1);
+		}
 		game->win_ptr = mlx_new_window(game->mlx_ptr, game->map->width, game->map->height + 64, "so_long");
 		init_img(game);
 		init_player(game);

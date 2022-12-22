@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/20 18:17:48 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:22:32 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# define SPRITE_SIZE 32
+# define SS 32
 # define WALL "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/wall.xpm"
 # define EMPTY "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/black.xpm"
 # define COLLECTIBLE "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Pacdots/pacdot_food.xpm"

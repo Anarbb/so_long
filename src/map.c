@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 13:39:12 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:24:38 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	get_map_size(char *map_path, t_game *game)
 		game->map->counter++;
 		if (game->map->width == 0)
 			game->map->width = ft_strlen(game->map->line)
-				* SPRITE_SIZE - SPRITE_SIZE;
+				* SS - SS;
 		free(game->map->line);
 	}
 	free(game->map->line);
-	game->map->height = game->map->counter * SPRITE_SIZE;
+	game->map->height = game->map->counter * SS;
 	close(game->map->fd);
 	return (1);
 }
@@ -65,35 +65,29 @@ int	create_matrix(char *map_path, t_game *game)
 }
 
 
-void	draw_map(t_game *game)
+void	draw_map(t_game *g)
 {
-	game->map->y = 0;
-	while (game->map->y < game->map->height / SPRITE_SIZE)
+	g->map->y = 0;
+	while (g->map->y < g->map->height / SS)
 	{
-		game->map->x = 0;
-		while (game->map->x < game->map->width / SPRITE_SIZE)
+		g->map->x = 0;
+		while (g->map->x < g->map->width / SS)
 		{
-			if (game->map->matrix[game->map->y][game->map->x] == '1')
-				draw_xpm(&game, game->map->wall_img, game->map->x * SPRITE_SIZE,
-					game->map->y * SPRITE_SIZE);
-			else if (game->map->matrix[game->map->y][game->map->x] == '0')
-				draw_xpm(&game, game->map->empty_img, game->map->x * SPRITE_SIZE,
-					game->map->y * SPRITE_SIZE);
-			else if (game->map->matrix[game->map->y][game->map->x] == 'C')
-				draw_xpm(&game, game->map->collectible_img, game->map->x * SPRITE_SIZE,
-					game->map->y * SPRITE_SIZE);
-			else if (game->map->matrix[game->map->y][game->map->x] == 'E')
-				draw_xpm(&game, game->map->exit_img, game->map->x * SPRITE_SIZE,
-					game->map->y * SPRITE_SIZE);
-			else if (game->map->matrix[game->map->y][game->map->x] == 'P')
-				draw_xpm(&game, game->player->img, game->map->x * SPRITE_SIZE,
-					game->map->y * SPRITE_SIZE);
-			else if (game->map->matrix[game->map->y][game->map->x] == 'G')
-				draw_xpm(&game, game->enemy->img, game->map->x * SPRITE_SIZE,
-					game->map->y * SPRITE_SIZE);
-			game->map->x++;
+			if (g->map->matrix[g->map->y][g->map->x] == '1')
+				draw_xpm(&g, g->map->wall_img, g->map->x * SS, g->map->y * SS);
+			else if (g->map->matrix[g->map->y][g->map->x] == '0')
+				draw_xpm(&g, g->map->empty_img, g->map->x * SS, g->map->y * SS);
+			else if (g->map->matrix[g->map->y][g->map->x] == 'C')
+				draw_xpm(&g, g->map->collectible_img, g->map->x * SS, g->map->y * SS);
+			else if (g->map->matrix[g->map->y][g->map->x] == 'E')
+				draw_xpm(&g, g->map->exit_img, g->map->x * SS, g->map->y * SS);
+			else if (g->map->matrix[g->map->y][g->map->x] == 'P')
+				draw_xpm(&g, g->player->img, g->map->x * SS, g->map->y * SS);
+			else if (g->map->matrix[g->map->y][g->map->x] == 'G')
+				draw_xpm(&g, g->enemy->img, g->map->x * SS, g->map->y * SS);
+			g->map->x++;
 		}
-		game->map->y++;
+		g->map->y++;
 	}
-	draw_score(game);
+	draw_score(g);
 }
