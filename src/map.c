@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/19 16:38:43 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:39:12 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,10 @@ int	create_matrix(char *map_path, t_game *game)
 	while (get_next_line(game->map->fd, &game->map->line))
 	{
 		game->map->matrix[game->map->y] = ft_strdup(game->map->line);
-		if (!game->map->matrix[game->map->y])
-			return (0);
 		free(game->map->line);
 		game->map->y++;
 	}
+	game->map->matrix[game->map->y] = NULL;
 	free(game->map->line);
 	close(game->map->fd);
 	return (1);

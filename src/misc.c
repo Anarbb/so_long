@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:13:45 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/20 14:22:50 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/20 18:17:38 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,10 @@ void	draw_xpm(t_game **game, void *img, int x, int y)
 {
 	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
 		img, x, y);
+}
+
+void	exit_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	exit(0);
 }

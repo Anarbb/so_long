@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:02:51 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/20 14:22:54 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/20 18:17:13 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	check_legal(t_game *game)
 
 int	move_player(int keynum, t_game *game)
 {
+	move_enemy(game);
 	check_legal(game);
 	if (keynum == 13 || keynum == 119)
 		move_up(game);
@@ -87,5 +88,7 @@ int	move_player(int keynum, t_game *game)
 		move_left(game);
 	if (keynum == 2 || keynum == 100)
 		move_right(game);
+	if (keynum == 53)
+		exit_game(game);
 	return (0);
 }

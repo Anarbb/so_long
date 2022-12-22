@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:18:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/16 16:10:25 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:16:44 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	if (!s)
+	if (!s || !*s)
 		return (0);
 	while (s[i])
 		i++;

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/20 14:22:04 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:38:58 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	find_path(char **matrix, int x, int y, int coins)
 {
 	static int	exits;
 	static int	c;
-	
+
 	if (matrix[y][x] == 'E')
 		exits++;
 	if (matrix[y][x] == 'C')
@@ -73,6 +73,7 @@ static void	backtracking(t_game *game)
 
 	x_p = game->player->x;
 	y_p = game->player->y;
+	str = 0;
 	str = ft_arrdup(game->map->matrix);
 	if (find_path(str, x_p, y_p, game->map->coins) == 0)
 	{
@@ -113,6 +114,8 @@ void	check_map(t_game *game)
 {
 	if ((game->map->exits > 1 || game->player->count > 1)
 		&& (game->map->exits && game->player->count))
+		exit(0);
+	if (game->map->matrix[0] == NULL)
 		exit(0);
 	check_rect(game);
 	backtracking(game);
