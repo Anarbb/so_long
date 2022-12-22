@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/20 15:34:09 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:51:36 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	move_enemy(t_game *game)
 	if (game->enemy->mov_right && game->map->matrix[game->enemy->y][game->enemy->x + 1] != '1')
 	{
 		game->map->matrix[game->enemy->y][game->enemy->x] = '0';
-		if (game->map->matrix[game->enemy->y][game->enemy->x + 1] == 'P')
-			exit(0);
+
 		game->map->matrix[game->enemy->y][game->enemy->x + 1] = 'G';
 		game->enemy->x++;
 	}
