@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 14:22:32 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:44:26 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,28 @@ void	get_enemy_cords(t_game *game)
 
 void	move_enemy(t_game *game)
 {
-	if (game->enemy->mov_right && game->map->matrix[game->enemy->y][game->enemy->x + 1] != '1')
+	if (game->enemy->mov_right && game->map->matrix[game->enemy->y]
+		[game->enemy->x + 1] != '1')
 	{
 		game->map->matrix[game->enemy->y][game->enemy->x] = '0';
-
 		game->map->matrix[game->enemy->y][game->enemy->x + 1] = 'G';
 		game->enemy->x++;
 	}
 	else
 	{
-		game->enemy->mov_right = 0;	
+		game->enemy->mov_right = 0;
 		game->enemy->mov_left = 1;
 	}
-	if (game->enemy->mov_left && game->map->matrix[game->enemy->y][game->enemy->x - 1] != '1')
+	if (game->enemy->mov_left && game->map->matrix[game->enemy->y]
+		[game->enemy->x - 1] != '1')
 	{
 		game->map->matrix[game->enemy->y][game->enemy->x] = '0';
-		if (game->map->matrix[game->enemy->y][game->enemy->x - 1] == 'P')
-			exit(0);
 		game->map->matrix[game->enemy->y][game->enemy->x - 1] = 'G';
 		game->enemy->x--;
 	}
 	else
 	{
-		game->enemy->mov_right = 1;	
+		game->enemy->mov_right = 1;
 		game->enemy->mov_left = 0;
 	}	
 }

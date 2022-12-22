@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 14:22:32 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:44:04 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void	check_rect(t_game *game)
 		exit(0);
 	}
 }
-
 
 static int	find_path(char **matrix, int x, int y, int coins)
 {
@@ -77,7 +76,8 @@ static void	backtracking(t_game *game)
 	str = ft_arrdup(game->map->matrix);
 	if (find_path(str, x_p, y_p, game->map->coins) == 0)
 	{
-		ft_putstr_fd("Error : Map is not valid due to not having a valid path\n", 1);
+		ft_putstr_fd("Error : Map is not valid due to not having a valid path\n",
+			1);
 		exit(0);
 	}
 	ft_free_arr(str);
@@ -100,7 +100,7 @@ void	check_path(char *s)
 	{
 		empty[j] = *tmp;
 		j++;
-		tmp--;	
+		tmp--;
 	}
 	empty[4] = 0;
 	if (ft_strncmp(empty, "reb.", 4))
@@ -117,8 +117,8 @@ void	check_map(t_game *game)
 		exit(0);
 	if (!game->map->matrix[0])
 	{
-			ft_putstr_fd("Error : Map is not valid\n", 1);
-			exit(0);
+		ft_putstr_fd("Error : Map is not valid\n", 1);
+		exit(0);
 	}
 	check_rect(game);
 	backtracking(game);

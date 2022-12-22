@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:26:41 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 14:24:38 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:26:24 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	create_matrix(char *map_path, t_game *game)
 	return (1);
 }
 
-
 void	draw_map(t_game *g)
 {
 	g->map->y = 0;
@@ -78,7 +77,7 @@ void	draw_map(t_game *g)
 			else if (g->map->matrix[g->map->y][g->map->x] == '0')
 				draw_xpm(&g, g->map->empty_img, g->map->x * SS, g->map->y * SS);
 			else if (g->map->matrix[g->map->y][g->map->x] == 'C')
-				draw_xpm(&g, g->map->collectible_img, g->map->x * SS, g->map->y * SS);
+				draw_xpm(&g, g->map->c_img, g->map->x * SS, g->map->y * SS);
 			else if (g->map->matrix[g->map->y][g->map->x] == 'E')
 				draw_xpm(&g, g->map->exit_img, g->map->x * SS, g->map->y * SS);
 			else if (g->map->matrix[g->map->y][g->map->x] == 'P')

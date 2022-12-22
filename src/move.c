@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:02:55 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 13:55:10 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:45:11 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,6 @@ void	move_left(t_game *game)
 			return ;
 	if (game->map->matrix[(game->player->y)][(game->player->x - 1)] == 'C')
 		game->map->coins_counter += 1;
-	if (game->map->matrix[game->enemy->y][game->enemy->x - 1] == 'G')
-	{
-		ft_putstr_fd("You Lose", 1);
-		exit(0);
-	}
 	game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 	game->map->matrix[(game->player->y)][(game->player->x - 1)] = 'P';
 	game->player->x -= 1;
@@ -85,11 +80,6 @@ void	move_right(t_game *game)
 			return ;
 	if (game->map->matrix[(game->player->y)][(game->player->x + 1)] == 'C')
 		game->map->coins_counter += 1;
-	if (game->map->matrix[game->enemy->y][game->enemy->x + 1] == 'G')
-	{
-		ft_putstr_fd("You Lose", 1);
-		exit(0);
-	}
 	game->map->matrix[(game->player->y)][(game->player->x)] = '0';
 	game->map->matrix[(game->player->y)][(game->player->x + 1)] = 'P';
 	game->player->x += 1;
