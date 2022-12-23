@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 18:16:39 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 18:22:35 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static int	check_player(t_game *game)
 {
 	if (game->win_ptr)
 	{
-		if ((game->player->x == game->enemy->x + 1
-			&& game->player->y == game->enemy->y)
-			|| (game->player->x == game->enemy->x - 1
-			&& game->player->y == game->enemy->y))
+		if ((game->player->x == game->enemy->x + 1 && game->player->y
+				== game->enemy->y)
+			|| (game->player->x == game->enemy->x - 1 && game->player->y
+				== game->enemy->y))
 			exit_game(game, "You lose!\n", 0);
 	}
 	return (0);
