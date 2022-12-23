@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 15:43:00 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 09:46:56 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@
 # include <fcntl.h>
 
 # define SS 32
-# define WALL "./sprites/Other/Walls/wall.xpm"
-# define EMPTY "./sprites/Other/Walls/black.xpm"
-# define COLLECTIBLE "./sprites/Other/Pacdots/pacdot_food.xpm"
-# define PLAYER_RIGHT "./sprites/Pac-Man/pac_open_right.xpm"
-# define PLAYER_LEFT "./sprites/Pac-Man/pac_open_left.xpm"
-# define PLAYER_UP "./sprites/Pac-Man/pac_open_up.xpm"
-# define PLAYER_DOWN "./sprites/Pac-Man/pac_open_down.xpm"
-# define PLAYER_CLOSED "./sprites/Pac-Man/pac_closed.xpm"
-# define PLAYER "./sprites/Pac-Man/pac_open_right.xpm"
-# define ENEMY "./sprites/Ghosts/B/ghost_down1.xpm"
-# define EXIT "./sprites/Other/Portal/portal.xpm"
+# define WALL "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/wall.xpm"
+# define EMPTY "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Walls/black.xpm"
+# define COLLECTIBLE "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Pacdots/pacdot_food.xpm"
+# define PLAYER_RIGHT "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_open_right.xpm"
+# define PLAYER_LEFT "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_open_left.xpm"
+# define PLAYER_UP "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_open_up.xpm"
+# define PLAYER_DOWN "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_open_down.xpm"
+# define PLAYER_CLOSED "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_closed.xpm"
+# define PLAYER "/Users/aarbaoui/Documents/1337/so_long/sprites/Pac-Man/pac_open_right.xpm"
+# define ENEMY "/Users/aarbaoui/Documents/1337/so_long/sprites/Ghosts/B/ghost_down1.xpm"
+# define EXIT "/Users/aarbaoui/Documents/1337/so_long/sprites/Other/Portal/portal.xpm"
 
 typedef struct s_map
 {
