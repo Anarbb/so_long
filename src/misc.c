@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:13:45 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 10:15:17 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 11:19:59 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_score(t_game *game)
 int	check_exit(t_game *game)
 {
 	if (game->map->coins == game->map->coins_counter)
-	exit_game(game, "You win!\n", 0);
+		exit_game(game, "You win!\n", 0);
 	return (0);
 }
 

@@ -70,6 +70,7 @@ SRCS        :=      main.c \
                           src/check.c \
                           src/image.c \
                           src/enemy.c \
+                          src/anim.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

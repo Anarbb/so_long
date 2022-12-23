@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 10:14:19 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:19:05 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ static int	find_path(char **matrix, int x, int y, int coins)
 static void	backtracking(t_game *game)
 {
 	char	**str;
-	int		x_p;
-	int		y_p;
+	int		x;
+	int		y;
 
-	x_p = game->player->x;
-	y_p = game->player->y;
+	x = game->player->x;
+	y = game->player->y;
 	str = 0;
 	str = ft_arrdup(game->map->matrix);
-	if (find_path(str, x_p, y_p, game->map->coins) == 0)
+	if (find_path(str, x, y, game->map->coins) == 0)
 		exit_game(game, "Error : Map does not have a valid path\n", 1);
 	ft_free_arr(str);
 }
