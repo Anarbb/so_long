@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:02:55 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 19:21:58 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 09:28:14 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 void	move_up(t_game *game)
 {
-	// if (game->player->x == game->enemy->x
-	// 	&& game->player->y == game->enemy->y - 1)
-	// {
-	// 	ft_putstr_fd("You Lose", 1);
-	// 	exit(0);
-	// }
-	move_enemy(game);
 	if (!game->player->go_up)
 		return ;
 	game->player->img = game->player->img_up;
@@ -37,13 +30,6 @@ void	move_up(t_game *game)
 
 void	move_down(t_game *game)
 {
-	// if (game->player->x == game->enemy->x
-	// 	&& game->player->y == game->enemy->y + 1)
-	// {
-	// 	ft_putstr_fd("You Lose", 1);
-	// 	exit(0);
-	// }
-	move_enemy(game);
 	if (!game->player->go_down)
 		return ;
 	game->player->img = game->player->img_down;
@@ -60,13 +46,6 @@ void	move_down(t_game *game)
 
 void	move_left(t_game *game)
 {
-	// if (game->player->x == game->enemy->x + 1
-	// 	&& game->player->y == game->enemy->y)
-	// {
-	// 	ft_putstr_fd("You Lose", 1);
-	// 	exit(0);
-	// }
-	move_enemy(game);
 	if (!game->player->go_left)
 		return ;
 	game->player->img = game->player->img_left;
@@ -83,13 +62,6 @@ void	move_left(t_game *game)
 
 void	move_right(t_game *game)
 {
-	// if (game->player->x == game->enemy->x - 1
-	// 	&& game->player->y == game->enemy->y)
-	// {
-	// 	ft_putstr_fd("You Lose", 1);
-	// 	exit(0);
-	// }
-	move_enemy(game);
 	if (!game->player->go_right)
 		return ;
 	game->player->img = game->player->img_right;

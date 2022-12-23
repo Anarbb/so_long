@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 19:25:15 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 09:28:48 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,46 @@ void	get_enemy_cords(t_game *game)
 	}
 }
 
-void	move_enemy(t_game *game)
+static int check_player(t_game *game)
 {
 	if (game->map->matrix[game->enemy->y][game->enemy->x - 1] == 'P'
-		|| game->map->matrix[game->enemy->y][game->enemy->x + 1] == 'P')
-		exit(0);
+		|| game->map->matrix[game->enemy->y][game->enemy->x + 1] == 'P'
+		|| game->map->matrix[game->enemy->y - 1][game->enemy->x] == 'P'
+		|| game->map->matrix[game->enemy->y + 1][game->enemy->x] == 'P')
+		{
+			ft_putstr_fd("You lose\n", 1);
+			exit(0);
+		}
+	return (0);
+}
+void	move_enemy(t_game *game)
+{
+	usleep(100000);
 	if (game->enemy->mov_right && game->map->matrix[game->enemy->y]
 		[game->enemy->x + 1] != '1')
 	{
+		check_player(game);
 		game->map->matrix[game->enemy->y][game->enemy->x] = '0';
 		game->map->matrix[game->enemy->y][game->enemy->x + 1] = 'G';
 		game->enemy->x++;
 	}
 	else
 	{
+		check_player(game);
 		game->enemy->mov_right = 0;
 		game->enemy->mov_left = 1;
 	}
 	if (game->enemy->mov_left && game->map->matrix[game->enemy->y]
 		[game->enemy->x - 1] != '1')
 	{
+		check_player(game);
 		game->map->matrix[game->enemy->y][game->enemy->x] = '0';
 		game->map->matrix[game->enemy->y][game->enemy->x - 1] = 'G';
 		game->enemy->x--;
 	}
 	else
 	{
+		check_player(game);
 		game->enemy->mov_right = 1;
 		game->enemy->mov_left = 0;
 	}	
