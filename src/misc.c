@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:13:45 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 09:46:44 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:15:17 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ void	draw_score(t_game *game)
 int	check_exit(t_game *game)
 {
 	if (game->map->coins == game->map->coins_counter)
-	{
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		ft_putstr_fd("You win congrats", 1);
-		exit(0);
-	}
+	exit_game(game, "You win!\n", 0);
 	return (0);
 }
 
@@ -55,10 +51,13 @@ void	draw_xpm(t_game **game, void *img, int x, int y)
 		img, x, y);
 }
 
-void	exit_game(t_game *game)
+void	exit_game(t_game *game, char *msg, int status)
 {
-	
-	mlx_clear_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	exit(0);
+	ft_putstr_fd(msg, 1);
+	if (game->win_ptr && game)
+	{
+		mlx_clear_window(game->mlx_ptr, game->win_ptr);
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	}
+	exit(status);
 }

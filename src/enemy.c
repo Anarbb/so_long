@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 09:44:25 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:14:50 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	get_enemy_cords(t_game *game)
 			{
 				game->enemy->x = j;
 				game->enemy->y = i;
+				game->enemy->count++;
 			}
 			j++;
 		}
@@ -50,11 +51,7 @@ static int check_player(t_game *game)
 			|| game->map->matrix[game->enemy->y][game->enemy->x + 1] == 'P'
 			|| game->map->matrix[game->enemy->y - 1][game->enemy->x] == 'P'
 			|| game->map->matrix[game->enemy->y + 1][game->enemy->x] == 'P')
-		{
-			
-			ft_putstr_fd("You lose\n", 1);
-			exit(0);
-		}
+		exit_game(game, "You lose!", 0);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/22 14:44:04 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:14:19 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ static void	check_rect(t_game *game)
 		i++;
 	}
 	if (err > 0)
-	{
-		ft_putstr_fd("Error : Map is not closed\n", 1);
-		exit(0);
-	}
+		exit_game(game, "Error : Map is not closed\n", 1);
 }
 
 static int	find_path(char **matrix, int x, int y, int coins)
@@ -75,11 +72,7 @@ static void	backtracking(t_game *game)
 	str = 0;
 	str = ft_arrdup(game->map->matrix);
 	if (find_path(str, x_p, y_p, game->map->coins) == 0)
-	{
-		ft_putstr_fd("Error : Map is not valid due to not having a valid path\n",
-			1);
-		exit(0);
-	}
+		exit_game(game, "Error : Map does not have a valid path\n", 1);
 	ft_free_arr(str);
 }
 
@@ -104,22 +97,16 @@ void	check_path(char *s)
 	}
 	empty[4] = 0;
 	if (ft_strncmp(empty, "reb.", 4))
-	{
-		ft_putstr_fd("Error : Invalid map name.\n", 1);
-		exit(0);
-	}
+		exit_game(0, "Error : Invalid path\n", 1);
 }
 
 void	check_map(t_game *game)
 {
 	if ((game->map->exits > 1 || game->player->count > 1)
 		&& (game->map->exits && game->player->count))
-		exit(0);
+		exit_game(game, "Error : Map doesn't have the neccesary chars\n", 1);
 	if (!game->map->matrix[0])
-	{
-		ft_putstr_fd("Error : Map is not valid\n", 1);
-		exit(0);
-	}
+		exit_game(game, "Error : Map is empty\n", 1);
 	check_rect(game);
 	backtracking(game);
 }

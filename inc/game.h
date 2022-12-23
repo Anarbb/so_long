@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 09:46:56 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:13:15 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ typedef struct s_enemy
 	int		mov_left;
 	int		mov_right;
 	void	*img;
+	int		count;
 	t_list	sprites;
 }				t_enemy;
 
@@ -129,7 +130,7 @@ void	move_right(t_game *game);
 void	draw_score(t_game *game);
 int		check_exit(t_game *game);
 int		check_move(char **matrix, int x, int y);
-void	exit_game(t_game *game);
+void	exit_game(t_game *game, char *msg, int status);
 // check.c
 void	check_map(t_game *game);
 void	check_path(char *s);
