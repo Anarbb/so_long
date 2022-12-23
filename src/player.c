@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:02:51 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 10:09:55 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/23 18:09:24 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	init_player(t_game *game)
 			PLAYER_LEFT, &game->player->width, &game->player->height);
 	game->player->img_right = mlx_xpm_file_to_image(game->mlx_ptr,
 			PLAYER_RIGHT, &game->player->width, &game->player->height);
-	game->player->img_closed = mlx_xpm_file_to_image(game->mlx_ptr,
-			PLAYER_CLOSED, &game->player->width, &game->player->height);
 	game->player->img = game->player->img_left;
 }
 
