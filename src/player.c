@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:02:51 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/24 16:52:23 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:03:09 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,5 @@ int	move_player(int keynum, t_game *game)
 		move_left(game);
 	if (keynum == 2 || keynum == 100)
 		move_right(game);
-	ft_putnbr_fd(keynum, 1);
 	return (0);
 }

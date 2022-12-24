@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:39:16 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/24 16:09:49 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:02:51 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	update(t_game *game)
 {
-	
+	if (!game)
+		exit(0);
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	draw_map(game);
 	return (0);
@@ -44,6 +45,7 @@ int	main(int argc, char **argv)
 				game->map->height + 64, "so_long");
 		init_game(game);
 		mlx_hook(game->win_ptr, 2, 0, move_player, game);
+		mlx_hook(game->win_ptr, 17, 0, update, NULL);
 		mlx_loop_hook(game->mlx_ptr, update, game);
 		mlx_loop(game->mlx_ptr);
 	}
