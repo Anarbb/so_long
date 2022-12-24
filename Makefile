@@ -14,7 +14,7 @@ FLAGS    := -Wall -Wextra -Werror -g -I inc
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS        :=      main.c \
+SRCS        :=      so_long.c \
                           src/gnl/get_next_line.c \
                           src/gnl/get_next_line_utils.c \
                           src/libft/ft_atoi.c \

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 12:41:49 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/24 14:33:22 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GAME_H
 
 # ifdef __APPLE__
-#  include <mlx.h>
+#  include "mlx.h"
 # else
 #  include "../mlx_linux/mlx.h"
 # endif
@@ -35,7 +35,8 @@
 # define PLAYER_DOWN "./sprites/Pac-Man/pac_open_down.xpm"
 # define PLAYER_CLOSED "./sprites/Pac-Man/pac_closed.xpm"
 # define PLAYER "./sprites/Pac-Man/pac_open_right.xpm"
-# define ENEMY "./sprites/Ghosts/B/ghost_"
+# define ENEMY_LEFT "./sprites/Ghosts/B/ghost_left1"
+# define ENEMY_RIGHT "./sprites/Ghosts/B/ghost_right1"
 # define EXIT "./sprites/Other/Portal/portal.xpm"
 
 typedef struct s_map

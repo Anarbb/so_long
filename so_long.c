@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 14:57:56 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 17:25:54 by aarbaoui         ###   ########.fr       */
+/*   Created: 2022/12/24 13:39:16 by aarbaoui          #+#    #+#             */
+/*   Updated: 2022/12/24 16:09:49 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-
 int	update(t_game *game)
 {
+	
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	draw_map(game);
 	return (0);
@@ -51,4 +51,3 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error : ./so_long <map_path>\n", 1);
 	return (0);
 }
- 

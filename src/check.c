@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 18:20:40 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/24 13:31:27 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ void	check_path(char *s)
 	}
 	empty[4] = 0;
 	if (ft_strncmp(empty, "reb.", 4))
-		exit_game(0, "Error : Invalid path\n", 1);
+	{
+		ft_putstr_fd("Error : Invalid path\n", 1);
+		exit(1);
+	}
 }
 
 void	check_map(t_game *game)

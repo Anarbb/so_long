@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/23 18:22:35 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/24 14:35:00 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_enemy(t_game *game)
 	game->enemy = ft_calloc(1, sizeof(t_enemy));
 	get_enemy_cords(game);
 	game->enemy->img = mlx_xpm_file_to_image(game->mlx_ptr,
-			ft_strjoin(ENEMY, "left1"),
+			ENEMY_LEFT,
 			&game->map->img_width, &game->map->img_height);
 }
 
@@ -51,6 +51,8 @@ static int	check_player(t_game *game)
 		if ((game->player->x == game->enemy->x + 1 && game->player->y
 				== game->enemy->y)
 			|| (game->player->x == game->enemy->x - 1 && game->player->y
+				== game->enemy->y)
+			|| (game->player->x == game->enemy->x && game->player->y
 				== game->enemy->y))
 			exit_game(game, "You lose!\n", 0);
 	}
