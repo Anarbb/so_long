@@ -6,11 +6,16 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:39:16 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/24 17:02:51 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:19:57 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+
+/*TODO:
+	1: check for if the characters in the map are not in the required list "01PGEC"
+	2: Try to implement animation.
+*/
 
 int	update(t_game *game)
 {
@@ -45,8 +50,8 @@ int	main(int argc, char **argv)
 				game->map->height + 64, "so_long");
 		init_game(game);
 		mlx_hook(game->win_ptr, 2, 0, move_player, game);
-		mlx_hook(game->win_ptr, 17, 0, update, NULL);
 		mlx_loop_hook(game->mlx_ptr, update, game);
+		mlx_hook(game->win_ptr, 17, 0, update, NULL);
 		mlx_loop(game->mlx_ptr);
 	}
 	else
