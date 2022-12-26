@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/26 16:16:07 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 19:56:41 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_enemy
 	int		mov_right;
 	void	*img;
 	int		count;
+	int		dir;
 	t_list	sprites;
 }				t_enemy;
 

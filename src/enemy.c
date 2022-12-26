@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:35 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/24 14:35:00 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 19:56:29 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	move(t_game *game, int left, int right)
 	if (left)
 	{
 		animate_enemy(game, 1);
+		game->enemy->dir = 1;
 		check_player(game);
 		if (game->map->matrix[game->enemy->y][game->enemy->x + 1] == 'C')
 			game->map->coins_counter++;
@@ -74,6 +75,7 @@ static void	move(t_game *game, int left, int right)
 	else if (right)
 	{
 		animate_enemy(game, 0);
+		game->enemy->dir = 0;
 		check_player(game);
 		if (game->map->matrix[game->enemy->y][game->enemy->x - 1] == 'C')
 			game->map->coins_counter++;
