@@ -6,13 +6,13 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 14:54:14 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/26 14:55:09 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:01:11 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-void	many_checks(t_game *game)
+void	check_chars(t_game *game)
 {
 	int	i;
 	int	j;
@@ -30,10 +30,21 @@ void	many_checks(t_game *game)
 		}
 		i++;
 	}
+}
+
+void	sanity_checks(t_game *game)
+{
+	check_chars(game);
 	if (game->enemy->count > 1)
 		exit_game(game, "Error : Map has more than one enemy\n", 1);
 	if (game->player->count > 1)
 		exit_game(game, "Error : Map has more than one player\n", 1);
 	if (game->player->count == 0)
 		exit_game(game, "Error : Map has no player\n", 1);
+	if (game->map->exits == 0)
+		exit_game(game, "Error : Map has no exits or coins\n", 1);
+	if (game->map->exits > 1)
+		exit_game(game, "Error : Map has more than one exit\n", 1);
+	if (game->map->coins == 0)
+		exit_game(game, "Error : Map has no coins\n", 1);
 }

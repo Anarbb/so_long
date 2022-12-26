@@ -6,16 +6,11 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:39:16 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/26 14:29:40 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:02:06 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
-/*TODO:
-	1: check for if the characters in the map are not in the required list "01PGEC"
-	2: Try to implement animation.
-*/
 
 int	update(t_game *game)
 {
