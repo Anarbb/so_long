@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/26 15:01:26 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 16:16:07 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GAME_H
 
 # ifdef __APPLE__
-#  include "mlx.h"
+#  include "../mlx/mlx.h"
 # else
 #  include "../mlx_linux/mlx.h"
 # endif
