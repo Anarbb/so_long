@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:42:26 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/24 17:19:49 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:56:07 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,10 @@ void	check_path(char *s)
 	}
 }
 
+
 void	check_map(t_game *game)
 {
-	if ((game->map->exits > 1 || game->player->count > 1 || game->enemy->count
-			< 1)
-		&& (game->map->exits && game->player->count))
-		exit_game(game, "Error : Map doesn't have the neccesary chars\n", 1);
+	many_checks(game);
 	if (!game->map->matrix[0])
 		exit_game(game, "Error : Map is empty\n", 1);
 	check_rect(game);

@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:46:38 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/24 14:33:22 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:55:59 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ void	exit_game(t_game *game, char *msg, int status);
 // check.c
 void	check_map(t_game *game);
 void	check_path(char *s);
+// check_2.c
+void	many_checks(t_game *game);
 // image.c
 void	init_img(t_game *game);
 // enemy.c

@@ -71,6 +71,7 @@ SRCS        :=      so_long.c \
                           src/image.c \
                           src/enemy.c \
                           src/anim.c \
+                          src/check_2.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

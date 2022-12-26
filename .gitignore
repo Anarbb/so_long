@@ -50,6 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Custom
 .DS_Store
 .vscode/
 push/
