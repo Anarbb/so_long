@@ -81,7 +81,7 @@ $(NAME): ${OBJS}
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
 			@ $(MAKE) -C mlx all >/dev/null 2>&1
 			@ cp ./mlx/libmlx.a .
-			$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) -Imlx $(OBJS) -Lmlx -lmlx -lm -framework OpenGL -framework AppKit
+			$(CC) $(CFLAGS) -o $(NAME) -Imlx $(OBJS) -Lmlx -lmlx -lm -framework OpenGL -framework AppKit
 			@echo "$(GREEN)$(NAME) created[0m ✔️"
 endif
 
@@ -128,5 +128,3 @@ endif
 re:			fclean all
 
 .PHONY:		all clean fclean re
-
-
