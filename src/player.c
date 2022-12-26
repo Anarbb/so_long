@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:02:51 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/24 17:03:09 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:51:08 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	move_player(int keynum, t_game *game)
 	if (keynum == 53)
 		exit_game(game, "You quit the game", 0);
 	check_legal(game);
-	move_enemy(game);
 	if (keynum == 13 || keynum == 119)
 		move_up(game);
 	if (keynum == 1 || keynum == 115)
@@ -88,5 +87,6 @@ int	move_player(int keynum, t_game *game)
 		move_left(game);
 	if (keynum == 2 || keynum == 100)
 		move_right(game);
+	move_enemy(game);
 	return (0);
 }
