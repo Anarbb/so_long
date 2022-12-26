@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 14:54:14 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/26 15:01:11 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:07:05 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_chars(t_game *game)
 		j = 0;
 		while (game->map->matrix[i][j])
 		{
-			if (ft_strchr("01PCEG", game->map->matrix[i][j]) == 0 
+			if (ft_strchr("01PCEG", game->map->matrix[i][j]) == 0
 				&& game->map->matrix[i][j] != '\n')
 				exit_game(game, "Error : Invalid character in map\n", 1);
 			j++;
