@@ -6,7 +6,7 @@
 /*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:39:16 by aarbaoui          #+#    #+#             */
-/*   Updated: 2022/12/26 20:00:19 by aarbaoui         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:52:38 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@ int	update(t_game *game)
 {
 	if (!game)
 		exit(0);
-	move_enemy(game);
+	if (game->enemy->count)
+		move_enemy(game);
 	animate_enemy(game, game->enemy->dir);
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	draw_map(game);
 	return (0);
 }
-static int	move_enem(t_game *game)
-{
-	move_enemy(game);
-	return (0);
-}
+
 void	init_game(t_game *game)
 {
 	init_img(game);
@@ -51,7 +48,6 @@ int	main(int argc, char **argv)
 				game->map->height + SS * 2, "so_long");
 		init_game(game);
 		mlx_key_hook(game->win_ptr, move_player, game);
-		mlx_loop_hook(game->mlx_ptr, move_enem, game);
 		mlx_loop_hook(game->mlx_ptr, update, game);
 		mlx_hook(game->win_ptr, 17, 0, update, NULL);
 		mlx_loop(game->mlx_ptr);
