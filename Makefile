@@ -79,7 +79,7 @@ UNAME		:=	$(shell uname)
 ifeq ($(UNAME), Darwin)
 $(NAME): ${OBJS}
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			@ $(MAKE) -C mlx all >/dev/null 2>&1
+			@ $(MAKE) -C mlx all
 			@ cp ./mlx/libmlx.a .
 			$(CC) $(CFLAGS) -o $(NAME) -Imlx $(OBJS) -Lmlx -lmlx -lm -framework OpenGL -framework AppKit
 			@echo "$(GREEN)$(NAME) created[0m ✔️"
